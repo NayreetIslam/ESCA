@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="esca_orm.Port" table="Port" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="portName" column="portName" type="string" length="50" not-null="false" lazy="false"/>
+		<many-to-one name="typePort" column="TypePortid" class="esca_orm.TypePort" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="numberPorts" column="numberPorts" type="integer" not-null="false" lazy="false"/>
+		<property name="developmentBoardKitid" column="DevelopmentBoardKitid" type="integer" not-null="true" lazy="false"/>
+		<set name="ORM_DevelopmentBoardKit" table="DevelopmentBoardKit_Port" lazy="false" cascade="save-update,lock" inverse="true">
+			<key column="Portid" not-null="true"/>
+			<many-to-many column="DevelopmentBoardKitid" class="esca_orm.DevelopmentBoardKit">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

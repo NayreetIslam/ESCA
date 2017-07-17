@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="esca_orm.MiniSpecification" table="MiniSpecification" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="processorDataBus" column="processorDataBus" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="ramType" column="ramType" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="ramAmmount" column="ramAmmount" type="double" not-null="false" lazy="false"/>
+		<many-to-one name="GENERAL_PURPOSE" column="GENERAL_PURPOSEid" class="esca_orm.GENERAL_PURPOSE" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

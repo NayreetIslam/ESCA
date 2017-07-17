@@ -1,0 +1,18 @@
+SMAP
+DevelopmentKit_jsp.java
+JSP
+*S JSP
+*F
++ 0 DevelopmentKit.jsp
+backend/DevelopmentKit.jsp
+*L
+1,33:44
+34:77,3
+35,18:80
+53:98,3
+54,31:101
+85,4:133
+88,39:137
+127:176,3
+128,110:179
+*E

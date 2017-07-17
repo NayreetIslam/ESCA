@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="esca_orm.RAM" table="RAM" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="name" column="name" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="frecuency" column="frecuency" type="double" not-null="false" lazy="false"/>
+		<property name="type" column="type" type="string" length="20" not-null="false" lazy="false"/>
+		<property name="amount" column="amount" type="double" not-null="false" lazy="false"/>
+		<set name="ORM_DevelopmentBoardKit" lazy="false" cascade="save-update,lock" inverse="true">
+			<key column="RAMid" not-null="true"/>
+			<one-to-many class="esca_orm.DevelopmentBoardKit"/>
+		</set>
+	</class>
+</hibernate-mapping>

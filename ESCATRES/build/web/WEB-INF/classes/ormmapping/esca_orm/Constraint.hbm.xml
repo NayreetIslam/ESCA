@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="esca_orm.Constraint" table="`Constraint`" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="name" column="name" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="type" column="type" type="string" length="50" not-null="false" lazy="false"/>
+		<property name="unit" column="unit" type="string" length="10" not-null="false" lazy="false"/>
+		<set name="ORM_GENERAL_PURPOSE" table="GENERAL_PURPOSE_Constraint" lazy="false" cascade="save-update,lock" inverse="true">
+			<key column="Constraintid" not-null="true"/>
+			<many-to-many column="GENERAL_PURPOSEid" class="esca_orm.GENERAL_PURPOSE">
+			</many-to-many>
+		</set>
+		<set name="ORM_ADD_FEATURE" table="ADD_FEATURE_Constraint" lazy="false" cascade="save-update,lock" inverse="true">
+			<key column="Constraintid" not-null="true"/>
+			<many-to-many column="ADD_FEATUREid" class="esca_orm.ADD_FEATURE">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

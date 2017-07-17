@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universidad de La Frontera
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="esca_orm.DevelopmentBoardKit" table="DevelopmentBoardKit" lazy="false">
+		<id name="id" column="id" type="integer" unsaved-value="0">
+			<generator class="identity">
+			</generator>
+		</id>
+		<property name="name" column="name" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="copany" column="copany" type="string" length="255" not-null="false" lazy="false"/>
+		<many-to-one name="processor" cascade="lock" column="Processorid" class="esca_orm.Processor" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="RAM" cascade="lock" column="RAMid" class="esca_orm.RAM" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="cost" column="cost" type="double" not-null="false" lazy="false"/>
+		<property name="urlImage" column="urlImage" type="string" length="255" not-null="false" lazy="false"/>
+		<many-to-one name="ROM" cascade="lock" column="ROMid" class="esca_orm.ROM" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="power_consumption" column="power_consumption" type="double" not-null="false" lazy="false"/>
+		<property name="buy_url" column="buy_url" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="weight" column="weight" type="double" not-null="false" lazy="false"/>
+		<set name="ORM_Port" table="DevelopmentBoardKit_Port" lazy="false" cascade="save-update,lock">
+			<key column="DevelopmentBoardKitid" not-null="true"/>
+			<many-to-many column="Portid" class="esca_orm.Port">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
